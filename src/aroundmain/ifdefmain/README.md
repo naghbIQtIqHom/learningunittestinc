@@ -60,11 +60,25 @@ int implement()
 
 ## このディレクトリのビルド
 
-Catch2 をあらかじめビルドしてインストールしておく。
 
-このディレクトリでビルド。ビルドしてテストも走る。
-``` shell
-make
-```
+* Catch2 をあらかじめビルドしてインストールしておく。
+  ``` shell
+  git clone https://github.com/catchorg/Catch2.git
+  cd Catch2
+  cmake -S . -B build
+  cmake --build build
+  cmake --install build
+  ```
 
+* このディレクトリでビルド。ビルドしてテストも走る。
+  * make の場合
+    ``` shell
+    make
+    ```
+  * CMake の場合
+    ``` shell
+    cmake -S . -B build
+    cmake --build build
+    (cd build && ctest -V)
+    ```
 
