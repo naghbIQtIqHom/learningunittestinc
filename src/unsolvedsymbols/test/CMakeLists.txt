@@ -1,0 +1,6 @@
+add_executable(test_calc_declare_dummy_func test_calc.cpp)
+target_link_libraries(test_calc_declare_dummy_func PRIVATE calc_lib Catch2Main Catch2)
+
+add_executable(test_calc_with_option_unsolved_symbol test_calc_with_opt.cpp)
+target_link_libraries(test_calc_with_option_unsolved_symbol PRIVATE calc_lib Catch2Main Catch2)
+target_link_options(test_calc_with_option_unsolved_symbol PRIVATE "-Wl,--unresolved-symbols=ignore-in-object-files")
