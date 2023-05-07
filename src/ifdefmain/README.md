@@ -79,6 +79,6 @@ int implement()
     ``` shell
     cmake -S . -B build
     cmake --build build
-    (cd build && ctest -V)
+    ctest --test-dir build
     ```
 

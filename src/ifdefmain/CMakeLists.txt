@@ -23,4 +23,3 @@ target_include_directories(test_hello PRIVATE ${SRC_DIR})
 target_include_directories(test_hello PRIVATE ${TEST_DIR})
 target_compile_definitions(test_hello PRIVATE MAIN_FOR_UNITTEST)
 target_link_libraries(test_hello PRIVATE Catch2Main Catch2)
-
