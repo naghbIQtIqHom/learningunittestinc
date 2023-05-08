@@ -12,24 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        submodules: recursive
+      - name: Clone Catch2 and build
+        run: |
+          git clone https://github.com/catchorg/Catch2.git
+          cd Catch2
+          git checkout refs/tags/v3.3.2
+          cmake -Bbuild -H. -DBUILD_TESTING=OFF
+          sudo cmake --build build/ --target install
 
-    - name: "build & test ifdefmain"
-      run: |
-        cd src/ifdefmain
-        cmake -S . -B build
-        cmake --build build
-        ctest --test-dir build
-        make
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
-    - name: "build & test unsolvedsymbols"
-      run: |
-        cd src/unsolvedsymbols
-        cmake -S . -B build
-        cmake --build build
-        ctest --test-dir build
-        make
+      - name: "build & test ifdefmain"
+        run: |
+          cd src/ifdefmain
+          cmake -S . -B build
+          cmake --build build
+          ctest --test-dir build
+          make
+
+      - name: "build & test unsolvedsymbols"
+        run: |
+          cd src/unsolvedsymbols
+          cmake -S . -B build
+          cmake --build build
+          ctest --test-dir build
+          make
