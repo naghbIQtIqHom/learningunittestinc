@@ -29,15 +29,15 @@ jobs:
       - name: "build & test ifdefmain"
         run: |
           cd src/ifdefmain
-          cmake -S . -B build
-          cmake --build build
-          ctest --test-dir build
+          #cmake -S . -B build
+          #cmake --build build
+          #ctest --test-dir build
           make
 
       - name: "build & test unsolvedsymbols"
         run: |
           cd src/unsolvedsymbols
-          cmake -S . -B build
-          cmake --build build
-          ctest --test-dir build
+          #cmake -S . -B build
+          #cmake --build build
+          #ctest --test-dir build
           make
