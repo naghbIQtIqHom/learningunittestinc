@@ -18,21 +18,13 @@ jobs:
           cd Catch2
           git checkout refs/tags/v3.3.2
           cmake -Bbuild -H. -DBUILD_TESTING=OFF
-          sudo cmake --build build/ --target install
+          sudo cmake --build build/ --target inastall
 
       - name: Check out
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: recursive
-
-      - name: "build & test ifdefmain"
-        run: |
-          cd src/ifdefmain
-          #cmake -S . -B build
-          #cmake --build build
-          #ctest --test-dir build
-          make
 
       - name: "build & test unsolvedsymbols"
         run: |
@@ -41,3 +33,12 @@ jobs:
           #cmake --build build
           #ctest --test-dir build
           make
+
+      - name: "build & test ifdefmain"
+        run: |
+          cd src/ifdefmain
+          cmake -S . -B build
+          cmake --build build
+          #ctest --test-dir build
+          #make
+
