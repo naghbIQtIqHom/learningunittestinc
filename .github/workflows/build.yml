@@ -18,7 +18,7 @@ jobs:
           cd Catch2
           git checkout refs/tags/v3.3.2
           cmake -Bbuild -H. -DBUILD_TESTING=OFF
-          sudo cmake --build build/ --target inastall
+          sudo cmake --build build/ --target install
 
       - name: Check out
         uses: actions/checkout@v3
